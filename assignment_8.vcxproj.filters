@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="과제8장_bag클래스객체소스.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="연습코드_정수Bag소스.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

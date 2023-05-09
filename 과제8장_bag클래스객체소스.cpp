@@ -1,4 +1,14 @@
 //8 컨테이너 클래스 - 객체들 집합 
+// Bag의 특성
+// 1) 순서가 없다.
+// 2) 중복이 허용된다.
+// 3) 꺼내는 것은 Delete() 함수를 만들어서 구현.
+// 4) 넣는 것은 Add() 함수를 만들어서 구현.
+// Set의 특성
+// 1) 순서가 없다.
+// 2) 중복이 없다.
+// 3) 즉, bag에서 Add()는 무조건 삽입하지만 Set에서는 중복 체크 코드(if문 사용)를 넣어서 Add()를 사용해야 한다. -> Bag::Add(p); 사용
+// 4) Delete()는 랜덤하게 꺼낸다. Set의 Delete()는 Bag의 Delete()를 그대로 써도 된다. -> Bag::Delete();
 #include <iostream>
 #include <string>
 using namespace std;
@@ -39,8 +49,15 @@ public:
     Coder() :Employee() {}
     Coder(string pid, string pname, string eno, string role, string language) : Employee(pid, pname, eno, role), language(language) {}
     int operator > (Coder&);//
-
+    void Print();
 };
+
+// ---------------------------------- 교수님 코드 -------------------------------------
+void Coder::Print() {
+    Employee::Print();
+    cout << language;
+}
+// ---------------------------------- 교수님 코드 -------------------------------------
 
 
 class Student : public Person {//virtual은 Person() 생성자를 호출하지 않음
@@ -76,7 +93,7 @@ public:
     // bag이 공백 상태이면 true, 그렇지 않으면 false를 반환
     int Top();
     Person& Find(String);
-    void Print();
+    virtual void Print();
 
 protected:
     void Full(); // bag이 포화상태일 때의 조치
@@ -85,6 +102,22 @@ protected:
     int MaxSize; // 배열의 크기
     int top; // 배열에서 원소가 들어 있는 가장 높은 위치
 };
+
+// ---------------------------------- 교수님 코드 -------------------------------------
+void Bag::Print() {
+    Person* p;
+    for (int i = 0; i < top; i++) {
+        p = arr[i];
+        p->Show();
+    }
+}
+
+void Bag::Add(Person* p) {
+    if (top < MaxSize) {
+        arr[top++] = p;
+    }
+}
+// ---------------------------------- 교수님 코드 -------------------------------------
 
 class Set : public Bag {
 public:
@@ -95,11 +128,21 @@ public:
     Person* Delete();
 
 };
+void Set::Add(Person* p) {
+    for (int i = 0; i < top; i++) {
+        // 중복 검사 코드 작성해야 한다.
+        if () {
+            cout << "중복 있다.";
+            return
+        }
+    }
+    Bag::Add(p);
+}
 
-
+// show함수는 클래스의 멤버함수가 아니다. polymorphism에 의해서 동적바인딩으로 처리된다.
 void Show(Person* p[]) {
     for () {
-
+        p[i].Print();   // 이 코드는 동적바인딩 한다.
   }
 }
 int main() {
@@ -155,6 +198,7 @@ int main() {
             break;
         case 2:
             // set의 모든 객체 출력하기
+            // cout을 사용하지 않고, Set에 Print()를 만들어서 사용.
             s.Print();
         case 3:
             // set에서 객체 찾기

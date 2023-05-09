@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{F2342C41-48EF-4B1D-95A9-8C0C99F83FC0}</ProjectGuid>
+    <ProjectGuid>{C6C6BDF1-78F5-4A8A-AB9F-F0511BFFA3C2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -98,6 +98,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="과제8장_bag클래스객체소스.cpp" />
     <ClCompile Include="연습코드_정수Bag소스.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
